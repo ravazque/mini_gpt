@@ -6,11 +6,11 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 20:33:53 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/19 01:56:15 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 static char	*ms_getcwd_or_pwd(void)
 {

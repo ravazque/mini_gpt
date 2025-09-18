@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 19:07:16 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 23:20:36 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/19 01:53:27 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ int	main(int argc, char **argv, char **envp)
 			if (!mini.prompt)
 				mini.prompt = ft_strdup("$ ");
 			mini.input = readline(mini.prompt);
-			if (mini.input == NULL)
-				break ;
+			if (!mini.input)
+			{
+				write(1, "exit\n", 5) ;
+				exit(0);
+			}
 			if (*mini.input)
 				add_history(mini.input);
 			if (parse(&mini) == 0 && mini.cmds)

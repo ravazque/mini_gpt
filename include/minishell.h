@@ -6,14 +6,14 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 23:06:48 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/19 01:55:31 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../src/auxlibft/include/libft.h"
+# include "../src/aux_libft/include/libft.h"
 # include "colors.h"
 
 # define ERR_C "Error: Argument is not -c.\n"

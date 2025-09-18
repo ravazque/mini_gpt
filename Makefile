@@ -7,14 +7,14 @@ NAME        = minishell
 SRC_DIR     = src
 INC_DIR     = include
 
-LIBFT_DIR   = src/auxlibft
+LIBFT_DIR   = src/aux_libft
 LIBFT_SRC_D = $(LIBFT_DIR)/src
 LIBFT_INC_D = $(LIBFT_DIR)/include
 LIBFT_A     = $(LIBFT_DIR)/libft.a
 
 OBJ_ROOT        = minishellObjects
 APP_OBJ_DIR     = $(OBJ_ROOT)/minishell
-LIBFT_OBJ_DIR   = $(OBJ_ROOT)/auxlibft
+LIBFT_OBJ_DIR   = $(OBJ_ROOT)/aux_libft
 
 CC       = cc
 CFLAGS   = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_INC_D)
