@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 19:52:35 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/18 23:07:37 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ static char	*env_lookup(t_mini *mini, const char *key)
 	klen = 0;
 	while (key[klen])
 		klen++;
-	if (mini && mini->envp)
+	if (mini && mini->env)
 	{
 		i = 0;
-		while (mini->envp[i])
+		while (mini->env[i])
 		{
-			if (!ft_strncmp(mini->envp[i], key, klen)
-				&& mini->envp[i][klen] == '=')
-				return (mini->envp[i] + klen + 1);
+			if (!ft_strncmp(mini->env[i], key, klen)
+				&& mini->env[i][klen] == '=')
+				return (mini->env[i] + klen + 1);
 			i++;
 		}
 	}

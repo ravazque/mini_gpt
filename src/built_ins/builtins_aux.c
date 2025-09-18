@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   builtins_aux.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 23:08:12 by ravazque         ###   ########.fr       */
+/*   Created: 2025/09/18 23:04:34 by ravazque          #+#    #+#             */
+/*   Updated: 2025/09/18 23:05:14 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-void	init_mini(t_mini *mini)
+char	**ft_copy_env(char **envp)
 {
-	mini->cmds = NULL;
-	mini->prompt = NULL;
-	mini->input = NULL;
-	mini->pwd = NULL;
-	mini->i = 0;
-	mini->exit_sts = 0;
-	mini->env = NULL;
+	int	i;
+	char	**env;
+
+	i = 0;
+	while (envp[i])
+		i++;
+	env = malloc(sizeof(char *) * (i + 1));
+	if (!env)
+		return (NULL);
+	i = 0;
+	while (envp[i])
+	{
+		env[i] = ft_strdup(envp[i]);
+		i++;
+	}
+	env[i] = NULL;
+	return (env);
 }

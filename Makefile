@@ -47,7 +47,7 @@ define show_progress
 	[ "$$dots" -ge 0 ] || dots=0; \
 	green=$$(printf "\033[1;32m"); \
 	reset=$$(printf "\033[0m"); \
-	printf "\rCompilando: ["; \
+	printf "\rCompiling: ["; \
 	bar=$$(printf "%*s" "$$hashes" ""); bar=$${bar// /#}; \
 	printf "%s" "$$green$$bar$$reset"; \
 	dot=$$(printf "%*s" "$$dots" ""); dot=$${dot// /.}; \
@@ -60,7 +60,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT_A) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(LDFLAGS) -o $@
-	@echo -e "$(LIGHT_TURQUOISE)¡Minishell ready!$(RESET)"
+	@echo -e "$(LIGHT_TURQUOISE)Minishell ready!$(RESET)"
 
 $(LIBFT_A): $(LIBFT_OBJS)
 	@$(AR) $(ARFLAGS) $@ $^
@@ -81,13 +81,13 @@ $(OBJ_ROOT) $(APP_OBJ_DIR) $(LIBFT_OBJ_DIR):
 clean:
 	@echo -e "$(LIGHT_RED)Running object cleanup...$(RESET)"
 	@rm -rf "$(OBJ_ROOT)"
-	@echo -e "$(TURQUOISE)¡Cleaning of objects completed!$(RESET)"
+	@echo -e "$(TURQUOISE)Cleaning of objects completed!$(RESET)"
 
 fclean:
 	@echo -e "$(LIGHT_RED)Running a full cleanup...$(RESET)"
 	@rm -rf "$(OBJ_ROOT)"
 	@rm -f "$(NAME)" "$(LIBFT_A)"
-	@echo -e "$(TURQUOISE)¡Full cleaning finished!$(RESET)"
+	@echo -e "$(TURQUOISE)Full cleaning finished!$(RESET)"
 
 re:
 	@$(MAKE) fclean

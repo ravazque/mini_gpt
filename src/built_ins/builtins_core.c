@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 17:10:07 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 20:11:51 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/18 23:00:49 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	built_ins(t_mini *mini)
 	else if (ft_strcmp(mini->cmds->args[0], "unset") == 0)
 		return (printf("Paula's built-in\n"), true);
 	else if (ft_strcmp(mini->cmds->args[0], "env") == 0)
-		return (printf("Paula's built-in\n"), true);
+		return (builtin_env(*mini), true);
 	else
 		return (false);
 }

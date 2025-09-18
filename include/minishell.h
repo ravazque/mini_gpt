@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 20:50:11 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/18 23:06:48 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ struct					s_mini
 	char				*pwd;
 	int					i;
 	int					exit_sts;
-	char				**envp;
+	char				**env;
 	t_cmd				*cmds;
 };
 
@@ -99,5 +99,7 @@ void		split_error(void);
 void		malloc_error(void);
 int			is_space(int c);
 char		*ms_substr(const char *s, size_t start, size_t len);
+void		builtin_env(t_mini mini);
+char		**ft_copy_env(char **envp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 19:07:16 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/18 20:48:23 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/18 23:20:36 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	print_args(char **mini_cmds)
 		printf("args[%d] = ( %s )\n", i, mini_cmds[i]);
 		i++;
 	}
+	// (void)mini_cmds;
+	// ft_putstr_fd("Error: command not found", STDERR_FILENO);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -30,7 +32,7 @@ int	main(int argc, char **argv, char **envp)
 
 	interactive_err(argc, argv);
 	init_mini(&mini);
-	mini.envp = envp;
+	mini.env = ft_copy_env(envp);
 	if (argc == 1)
 	{
 		while (1)
