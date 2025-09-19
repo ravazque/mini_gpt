@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/19 01:55:31 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/19 04:09:50 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ struct					s_mini
 	char				*prompt;
 	char				*input;
 	char				*pwd;
-	int					i;
-	int					exit_sts;
 	char				**env;
+	int					argc;
+	char 				**argv;
+	int					exit_sts;
 	t_cmd				*cmds;
 };
 
@@ -90,7 +91,7 @@ void		builtin_exit(t_mini *mini);
 void		builtin_echo(t_mini mini);
 void		builtin_pwd(t_mini *mini);
 char		*build_prompt(t_mini *mini);
-void		init_mini(t_mini *mini);
+void		init_mini(t_mini *mini, int argc, char *argv[], char *envp[]);
 void		cleanup_mini(t_mini *mini);
 void		free_split(char **split);
 int			syntax_error(const char *near);
@@ -100,6 +101,10 @@ void		malloc_error(void);
 int			is_space(int c);
 char		*ms_substr(const char *s, size_t start, size_t len);
 void		builtin_env(t_mini mini);
-char		**ft_copy_env(char **envp);
+char		**ft_copy_dblptr(char **envp);
+void		loop(t_mini *mini);
+void		non_interactive(t_mini *mini);
+void		print_args(char **mini_cmds);
+void		ft_signal(t_mini *mini);
 
 #endif
