@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-void loop(t_mini *mini)
+void	loop(t_mini *mini)
 {
 	while (1)
 	{

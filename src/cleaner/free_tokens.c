@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_aux.c                                     :+:      :+:    :+:   */
+/*   free_tokens.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 23:04:34 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/19 04:32:05 by ravazque         ###   ########.fr       */
+/*   Created: 2025/09/19 04:26:43 by ravazque          #+#    #+#             */
+/*   Updated: 2025/09/19 04:27:16 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	**ft_copy_dblptr(char **envp)
+void	free_tokens(t_token *tk)
 {
-	int		i;
-	char	**env;
+	t_token	*nx;
 
-	i = 0;
-	while (envp[i])
-		i++;
-	env = malloc(sizeof(char *) * (i + 1));
-	if (!env)
-		return (malloc_error(), NULL);
-	i = 0;
-	while (envp[i])
+	while (tk)
 	{
-		env[i] = ft_strdup(envp[i]);
-		i++;
+		nx = tk->next;
+		if (tk->raw)
+			free(tk->raw);
+		free(tk);
+		tk = nx;
 	}
-	env[i] = NULL;
-	return (env);
 }

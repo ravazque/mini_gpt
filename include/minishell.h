@@ -6,7 +6,7 @@
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/19 04:09:50 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/19 04:33:08 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,14 @@ struct					s_mini
 	char				*pwd;
 	char				**env;
 	int					argc;
-	char 				**argv;
+	char				**argv;
 	int					exit_sts;
 	t_cmd				*cmds;
 };
 
 t_token		*lex_line(const char *s, int *err);
 void		free_tokens(t_token *tk);
+void		free_redirs(t_redir *r);
 t_cmd		*parse_tokens(t_token *tk, int *err);
 int			parse(t_mini *mini);
 void		free_cmds(t_cmd *cmd);
@@ -93,7 +94,7 @@ void		builtin_pwd(t_mini *mini);
 char		*build_prompt(t_mini *mini);
 void		init_mini(t_mini *mini, int argc, char *argv[], char *envp[]);
 void		cleanup_mini(t_mini *mini);
-void		free_split(char **split);
+void		free_dblptr(char **split);
 int			syntax_error(const char *near);
 void		interactive_err(int argc, char *argv[]);
 void		split_error(void);

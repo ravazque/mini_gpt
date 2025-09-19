@@ -1,83 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_mini.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ravazque <ravazque@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:20:00 by ravazque          #+#    #+#             */
-/*   Updated: 2025/09/19 01:56:10 by ravazque         ###   ########.fr       */
+/*   Updated: 2025/09/19 04:30:45 by ravazque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	free_tokens(t_token *tk)
-{
-	t_token	*nx;
-
-	while (tk)
-	{
-		nx = tk->next;
-		if (tk->raw)
-			free(tk->raw);
-		free(tk);
-		tk = nx;
-	}
-}
-
-static void	free_redirs(t_redir *r)
-{
-	t_redir	*n;
-
-	while (r)
-	{
-		n = r->next;
-		if (r->target)
-			free(r->target);
-		free(r);
-		r = n;
-	}
-}
-
-void	free_cmds(t_cmd *cmd)
-{
-	t_cmd	*n;
-	size_t	i;
-
-	while (cmd)
-	{
-		n = cmd->next;
-		if (cmd->args)
-		{
-			i = 0;
-			while (cmd->args[i])
-			{
-				free(cmd->args[i]);
-				i++;
-			}
-			free(cmd->args);
-		}
-		if (cmd->redirs)
-			free_redirs(cmd->redirs);
-		free(cmd);
-		cmd = n;
-	}
-}
-
-void	free_split(char **split)
+void	free_dblptr(char **dblptr)
 {
 	size_t	i;
 
-	if (!split)
+	if (!dblptr)
 		return ;
 	i = 0;
-	while (split[i])
+	while (dblptr[i])
 	{
-		free(split[i]);
+		free(dblptr[i]);
 		i++;
 	}
-	free(split);
+	free(dblptr);
+}
+
+static void	free_args(t_mini *mini)
+{
+	if (mini->env)
+	{
+		free_dblptr(mini->env);
+		mini->env = NULL;
+	}
+	if (mini->argv)
+	{
+		free_dblptr(mini->argv);
+		mini->argv = NULL;
+	}
 }
 
 void	cleanup_mini(t_mini *mini)
@@ -97,6 +58,7 @@ void	cleanup_mini(t_mini *mini)
 		free(mini->pwd);
 		mini->pwd = NULL;
 	}
+	free_args(mini);
 	if (mini->cmds)
 	{
 		free_cmds(mini->cmds);
